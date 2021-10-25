@@ -3,8 +3,8 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 app.on('ready', () => {
     console.log('Aplicação iniciada');
     let mainWindow = new BrowserWindow({
-        width: 1200,
-        height: 800
+        width: 600,
+        height: 400
     });
     //mainWindow.loadURL('https://sapiens.agu.gov.br/')
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);
@@ -20,8 +20,8 @@ let sobreWindow = null;
 ipcMain.on('abrir-janela-sobre', () => {
     if (sobreWindow == null){
        sobreWindow = new BrowserWindow({
-            width: 600,
-            height: 400,
+            width: 300,
+            height: 200,
             alwaysOnTop: true,
             frame: false
         }); 
