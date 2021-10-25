@@ -11,10 +11,19 @@ linkSobre.addEventListener('click' , function(){
 });
 
 let imgs = ['img/play-button.svg','img/stop-button.svg']
+let play = false;
 botaoPlay.addEventListener('click', function(){
-    imgs = imgs.reverse();
 
-    timer.iniciar(tempo);
+    //Controla fluxo do timer
+    if (play){
+        timer.iniciar(tempo);
+        play = true;
+    } else {
+        timer.parar(tempo);
+        play = false;
+    }
 
+    //Inverte imagem do botão
+    imgs = imgs.reverse()
     botaoPlay.src = imgs[0];
 });
