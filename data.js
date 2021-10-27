@@ -1,6 +1,6 @@
 const jsonFile = require('jsonfile-promised');
 const fs = require('fs');
-const jsonfilePromised = require('jsonfile-promised');
+
 
 module.exports = {
     salvaDados(nomeCurso, tempoEstudado){
@@ -14,13 +14,18 @@ module.exports = {
                 })
         }
     },
+    pegaDados(nomeCurso){
+        let arquivoDoCurso = __dirname + '/data/' + nomeCurso + '.json';
+        console.log("Arquivo do curso = " + arquivoDoCurso)
+        return jsonFile.readFile(arquivoDoCurso)
+    },
     adicionaTempoAoCurso(arquivoDoCurso, tempoEstudado){
         let dados = {
             ultimoEstudo: new Date().toString(),
             tempo: tempoEstudado
         }
 
-        jsonfilePromised.writeFile(arquivoDoCurso,dados,{spaces:2})
+        jsonFile.writeFile(arquivoDoCurso,dados,{spaces:2})
             .then(()=>{
                 console.log('Tempo salvo com sucesso')
             }).catch(()=>{

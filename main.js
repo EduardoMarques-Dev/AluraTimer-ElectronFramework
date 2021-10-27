@@ -4,8 +4,8 @@ const data = require('./data')
 app.on('ready', () => {
     console.log('Aplicação iniciada');
     let mainWindow = new BrowserWindow({
-        width: 600,
-        height: 400
+        width: 1200,
+        height: 800
     });
     //mainWindow.loadURL('https://sapiens.agu.gov.br/')
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);
@@ -39,6 +39,5 @@ ipcMain.on('fechar-janela-sobre', () => {
 });
 
 ipcMain.on('curso-parado', (event, nomeCurso, tempoEstudado)=>{
-    console.log(`O curso ${nomeCurso} foi estudado por ${tempoEstudado}`);
     data.salvaDados(nomeCurso, tempoEstudado)
 });
