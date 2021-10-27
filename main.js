@@ -1,5 +1,8 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, Tray } = require('electron');
 const data = require('./data')
+
+let tray = null;
+let sobreWindow = null;
 
 app.on('ready', () => {
     console.log('Aplicação iniciada');
@@ -7,6 +10,8 @@ app.on('ready', () => {
         width: 1200,
         height: 800
     });
+    tray = new Tray(`${__dirname}/app/img/icon.png`);
+
     //mainWindow.loadURL('https://sapiens.agu.gov.br/')
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 });
@@ -14,9 +19,6 @@ app.on('ready', () => {
 app.on('window-all-closed', () => {
     app.quit();
 });
-
-
-let sobreWindow = null;
 
 ipcMain.on('abrir-janela-sobre', () => {
     if (sobreWindow == null){

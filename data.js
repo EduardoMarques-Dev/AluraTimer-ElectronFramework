@@ -1,10 +1,13 @@
 const jsonFile = require('jsonfile-promised');
 const fs = require('fs');
 
-
 module.exports = {
     salvaDados(nomeCurso, tempoEstudado){
-        let arquivoDoCurso = __dirname + '/data/' + nomeCurso + '.json';
+        let arquivoDoCurso = `${__dirname}/data/${nomeCurso}.json`;
+        // let arquivoDoCurso = (X)=>{
+        //     return `${__dirname}/data/${X}.json`
+        // };
+        // arquivoDoCurso(nomeCurso);
         if(fs.existsSync(arquivoDoCurso)){
             this.adicionaTempoAoCurso(arquivoDoCurso,tempoEstudado);
         }else{
@@ -15,9 +18,10 @@ module.exports = {
         }
     },
     pegaDados(nomeCurso){
-        let arquivoDoCurso = __dirname + '/data/' + nomeCurso + '.json';
-        console.log("Arquivo do curso = " + arquivoDoCurso)
-        return jsonFile.readFile(arquivoDoCurso)
+        let arquivoDoCurso = (nomeCurso)=>{
+            return `${__dirname}/data/${nomeCurso}.json`
+        };
+        return jsonFile.readFile(arquivoDoCurso(nomeCurso));
     },
     adicionaTempoAoCurso(arquivoDoCurso, tempoEstudado){
         let dados = {
