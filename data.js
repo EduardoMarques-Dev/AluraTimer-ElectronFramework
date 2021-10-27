@@ -1,5 +1,7 @@
 const jsonFile = require('jsonfile-promised');
+// fs = File System, é um módulo do node.
 const fs = require('fs');
+const { X_OK } = require('constants');
 
 module.exports = {
     salvaDados(nomeCurso, tempoEstudado){
@@ -43,5 +45,13 @@ module.exports = {
             }).catch(()=>{
                 console.log(err);
             });
+    },
+    pegaNomeDosCursos(){
+        let nomeArquivos = fs.readdirSync(`${__dirname}/data/`);
+        let nomeCursos = nomeArquivos.map((arquivo)=>{
+            return arquivo.substr(0, arquivo.lastIndexOf('.')).replace("-"," ");
+        });
+        
+        return nomeCursos;
     }
 }
