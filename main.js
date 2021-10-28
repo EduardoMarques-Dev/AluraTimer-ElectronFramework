@@ -4,11 +4,12 @@ const templateGenerator = require ('./template')
 
 let tray = null;
 let sobreWindow = null;
+let mainWindow = null;
 
 app.on('ready', () => {
     //Inicializa Janela Principal
     console.log('Aplicação iniciada');
-    let mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 1200,
         height: 800
     });
@@ -54,5 +55,5 @@ ipcMain.on('fechar-janela-sobre', () => {
 });
 
 ipcMain.on('curso-parado', (event, nomeCurso, tempoEstudado)=>{
-    data.salvaDados(nomeCurso, tempoEstudado)
+    data.salvaDados(nomeCurso, tempoEstudado);
 });

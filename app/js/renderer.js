@@ -8,6 +8,8 @@ let tempo = document.querySelector('.tempo');
 let nomeCurso = document.querySelector(".curso");
 let imgs = ['img/play-button.svg','img/stop-button.svg']
 let play = true;
+let botaoAdicionar = document.querySelector(".botao-adicionar");
+let campoAdicionar = document.querySelector(".campo-adicionar")
 
 window.onload = ()=>{
     /*
@@ -50,4 +52,24 @@ botaoPlay.addEventListener('click', function(){
     //Inverte imagem do botão
     imgs = imgs.reverse()
     botaoPlay.src = imgs[0];
+});
+
+botaoAdicionar.addEventListener('click', ()=>{
+
+    let textoDoCampo = campoAdicionar.value.trim();
+
+    if (textoDoCampo != ""){
+
+        if(play == false){
+            timer.parar(nomeCurso.textContent);
+            imgs = imgs.reverse()
+            botaoPlay.src = imgs[0];
+            play=true;
+        }
+            nomeCurso.textContent = textoDoCampo;
+            tempo.textContent = "00:00:00";
+            campoAdicionar.value="";
+
+    }
+
 });
