@@ -17,10 +17,14 @@ app.on('ready', () => {
 
     //Configuração do Menu Tray
     tray = new Tray(`${__dirname}/app/img/icon-tray.png`);
-    let template = templateGenerator.geraTrayTemplate();
+    let template = templateGenerator.geraTrayTemplate(mainWindow);
     let contextMenu = Menu.buildFromTemplate(template);
     tray.setContextMenu(contextMenu);
     tray.setToolTip('Timer do Alura');
+
+    // // O processo de envio do principal para a view
+    // // Necesita que seja especificado a janela 
+    // mainWindow.send('curso-trocado');
 });
 
 app.on('window-all-closed', () => {

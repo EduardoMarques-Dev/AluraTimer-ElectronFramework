@@ -3,7 +3,7 @@ const { Menu } = require('electron');
 const data = require('./data');
 
 module.exports = {
-    geraTrayTemplate() {
+    geraTrayTemplate(win) {
         // Menu.buildFromTemplate([
         //     { label: 'Cursos'},
         //     { label: '', type: 'separator' },
@@ -27,7 +27,11 @@ module.exports = {
 
             let menuItem = {
                 'label': curso,
-                type: 'radio'
+                type: 'radio',
+                click: ()=>{
+                    console.log(curso);
+                    win.send('curso-trocado', curso);
+                }
             }
             template.push(menuItem);
         })
