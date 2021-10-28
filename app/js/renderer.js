@@ -10,7 +10,11 @@ let imgs = ['img/play-button.svg','img/stop-button.svg']
 let play = true;
 
 window.onload = ()=>{
-    retorno = data.pegaDados(nomeCurso)
+    /*
+    Busca os dados salvos em Json do tempo corrido do curso
+    e atualiza a informação no html.
+    */
+    data.pegaDados(nomeCurso)
     .then((dados)=>{
         tempo.textContent=dados.tempo;
     });

@@ -2,7 +2,7 @@ const { ipcRenderer, shell } = require('electron');
     const process = require('process');
 
 let linkFechar = document.querySelector("#link-fechar");
-let linkTwitter = document.querySelector("#link-twitter");
+let linkTwitter = document.querySelector("#link-linkedin");
 let versaoElectron = document.querySelector('#versao-electron');
 
 window.onload = function(){
@@ -14,5 +14,9 @@ linkFechar.addEventListener('click', function () {
 })
 
 linkTwitter.addEventListener('click', function () {
-    shell.openExternal("https://www.twitter.com/dquintanilhas");
+    /*
+    Shel é utilizado para abrir o link no navegador padrão
+    Sem ele, o link abriria dentro do próprio electron.
+    */
+    shell.openExternal("https://www.linkedin.com/in/carlosedmarques/");
 })
