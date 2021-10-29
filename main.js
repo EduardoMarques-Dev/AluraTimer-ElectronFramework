@@ -32,6 +32,20 @@ app.on('window-all-closed', () => {
     app.quit();
 });
 
+ipcMain.on('recarregar-tray-meu', ()=>{
+    console.log("AMO O BURRO DO SHREK")
+    let template = templateGenerator.geraTrayTemplate(mainWindow);
+    let contextMenu = Menu.buildFromTemplate(template);
+    tray.setContextMenu(contextMenu);
+});
+
+
+// ipcMain.on('curso-adicionado', (event, nomeCurso)=>{
+//     let novoTemplate = templateGenerator.adicionaCursoNoTray(nomeCurso, template);
+//     let novoContextMenu = Menu.buildFromTemplate(novoTemplate);
+//     tray.setContextMenu(novoContextMenu);
+// });
+
 ipcMain.on('abrir-janela-sobre', () => {
     //Inicializa Janela Sobre
     if (sobreWindow == null){
@@ -46,7 +60,7 @@ ipcMain.on('abrir-janela-sobre', () => {
             sobreWindow = null;
         })
     }
-    //Define URL da Janela Sobre
+    // Define URL da Janela Sobre
     sobreWindow.loadURL(`file://${__dirname}/app/sobre.html`);
 });
 

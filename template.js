@@ -38,5 +38,17 @@ module.exports = {
 
         return template;
 
+    },
+    adicionaCursoNoTray(nomeCurso, template){
+        let menuItem = {
+            'label': nomeCurso,
+            type: 'radio',
+            click: ()=>{
+                console.log(curso);
+                win.send('curso-trocado', curso);
+            }
+        }
+        return template.push(menuItem)
+
     }
 }

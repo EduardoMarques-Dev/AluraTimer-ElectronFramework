@@ -47,6 +47,7 @@ botaoPlay.addEventListener('click', function(){
     } else {
         timer.parar(nomeCurso.textContent);
         play = true;
+        ipcRenderer.send('recarregar-tray-meu');
     }
 
     //Inverte imagem do botão
@@ -69,6 +70,8 @@ botaoAdicionar.addEventListener('click', ()=>{
             nomeCurso.textContent = textoDoCampo;
             tempo.textContent = "00:00:00";
             campoAdicionar.value="";
+
+            //ipcRenderer.send("curso-adicionado",nomeCurso.textContent);
 
     }
 
