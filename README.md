@@ -1,4 +1,4 @@
-# Timer Alura (Alura.Node-Electron)
+# Alura Timer - Electron Framework
 
 > ⚠️ Status: developing
 
@@ -18,6 +18,6 @@ Javascript - Electron | JSON | VS Code |
 # How to run de application:
 
 Use this commands:
-1. npm install electron@1.6.1 --save# Alura.Node-Electron
+1. npm install electron@1.6.1 --save (Repository HTTPS)
 2. npm install moment@2.17.1 --save
 3. npm install jsonfile-promised --save
